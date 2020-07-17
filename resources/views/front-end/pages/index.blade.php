@@ -7,17 +7,24 @@
     <div class="all_courses">
         <div class="container">
             <div class="row">
-
+                <div class="col-xl-12">
+                    <div class="section_title text-center mb-100">
+                        <h3>Bai Thi Moi</h3>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                @foreach ($exams as $exam)
                 <div class="col-xl-4 col-lg-4 col-md-6">
                     <div class="single_courses">
                         <div class="thumb">
                             <a href="#">
-                                <img src="img/courses/1.png" alt="">
+                                <img src="{{$exam->image_url}}" alt="">
                             </a>
                         </div>
                         <div class="courses_info">
-                            <span>Photoshop</span>
-                            <h3><a href="#">ádadasd</a></h3>
+                            <span>{{$exam->quiz['title']}}</span>
+                            <h3> <a href="{{ route('exam.detail.get',$exam->id) }}" onclick="return confirm('Bạn có muốn bắt đầu bài thi')">{{$exam->title}}</a></h3>
                             <div class="star_prise d-flex justify-content-between">
                                 <span class="text-muted">
                                     Ngày mở
@@ -29,10 +36,11 @@
                         </div>
                     </div>
                 </div>
-
+                @endforeach
             </div>
         </div>
     </div>
 </div>
 <!-- popular_courses_end-->
+
 @stop

@@ -21,4 +21,14 @@ class Result extends Model
     {
         return $this->belongsTo('App\Models\User', 'user_id', 'id');
     }
+
+    public function exam()
+    {
+        return $this->belongsTo('App\Models\Exam', 'exam_id', 'id');
+    }
+
+    public function userAnswers()
+    {
+        return $this->hasMany('App\Models\UserAnswer', 'result_id', 'id');
+    }
 }

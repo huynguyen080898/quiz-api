@@ -14,4 +14,9 @@ class UserAnswer extends Model
         'user_answer',
         'correct'
     ];
+
+    public function result()
+    {
+        return $this->belongsTo('App\Models\Result', 'result_id', 'id');
+    }
 }

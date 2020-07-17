@@ -15,6 +15,10 @@ class CreateUserAnswersTable extends Migration
     {
         Schema::create('user_answers', function (Blueprint $table) {
             $table->id();
+            $table->integer('result_id');
+            $table->integer('question_id');
+            $table->string('user_answer');
+            $table->boolean('correct')->default(false);
             $table->timestamps();
         });
     }

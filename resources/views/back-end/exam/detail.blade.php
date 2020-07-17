@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 <!-- @section('title', 'Quiz') -->
 @section('styles')
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -6,15 +6,11 @@
 
 @section('content')
 
-@include('notification.messages')
-
-@include('notification.errors')
-
 <h3 style="text-align: center">Chi Tiết Đề Thi</h3>
 
 <div class="card shadow mb-4">
     <div class="text-right mr-5 mt-3">
-        <h4><b>Tổng điểm: {{$exam_detail->sum('score')}}</b></h4>
+        <h4><b>Tổng điểm: 0</b></h4>
     </div>
     <div class="card-body">
         <div class="table-responsive">
@@ -31,15 +27,15 @@
                     @php
                     $i = 1;
                     @endphp
-                    @foreach ($exam_detail as $value)
+                    @foreach ($data as $value)
                     <tr>
                         <th> {{ $i++ }} </th>
-                        <td> {{ $value->question_title }} </td>
+                        <td> {{ $value->question->title }} </td>
                         <td> {{ $value->score }} </td>
                         <td>
                             <button type="button" class="btn btn-info btn-circle" data-toggle="modal" data-target="#updateQuestionScore" data-examid="{{$value->exam_id}}" data-questionid="{{$value->question_id}}" data-answerid="{{$value->answer_id}}"> <i class="fa fas fa-edit"></i></button>
 
-                            <a href="{{ route('exam.detail.delete', $value->id) }}" onclick="return confirm('Bạn có thật sự muốn xóa?')" class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a>
+                            <a href="#" onclick="return confirm('Bạn có thật sự muốn xóa?')" class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a>
                         </td>
                     </tr>
                     @endforeach
@@ -58,7 +54,7 @@
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
-            <form action="{{route('exam.detail.update')}}" method="post">
+            <form action="" method="post">
                 @csrf
                 <div class="modal-body">
                     <div class="form-group">
@@ -96,11 +92,11 @@
         var button = $(event.relatedTarget)
         var exam_id = button.data('examid')
         var question_id = button.data('questionid')
-     
+
         var modal = $(this)
         modal.find('#exam_id').val(exam_id)
         modal.find('#question_id').val(question_id)
-        
+
     })
 </script>
 @stop

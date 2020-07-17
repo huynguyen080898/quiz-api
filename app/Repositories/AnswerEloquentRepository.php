@@ -11,4 +11,9 @@ class AnswerEloquentRepository extends EloquentRepository implements AnswerRepos
 	{
 		return Answer::class;
 	}
+
+	public function getAnswerByQuestionID($questionID)
+	{
+		return $this->_model->where('question_id', $questionID)->get();
+	}
 }

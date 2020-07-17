@@ -23,7 +23,6 @@ class QuizEloquentRepository extends EloquentRepository implements QuizRepositor
 
 	public function countQuestionGroupQuiz()
 	{
-		$a = $this->_model::with('questions')->get();
-		dd($a->toArray());
+		return $this->_model::withCount('questions')->get();
 	}
 }

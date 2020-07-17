@@ -1,15 +1,13 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 
 @section('content')
-
-@include('notification.messages')
-
-@include('notification.errors')
 
 <div class="container">
     <h3 style="text-align: center; color: red; font-weight: bold">Thêm Câu Hỏi</h3>
     <form method="post" action=" {{ route('question.store')}} " enctype="multipart/form-data">
         @csrf
+        @include('back-end.notifications.messages')
+        @include('back-end.notifications.errors')
         <div class="form-group">
             <div class="input-group mb-3 form-group">
                 <div class="input-group-prepend">
@@ -33,7 +31,6 @@
                     <a class="nav-link" data-toggle="tab" onclick="enableTableTab()" href="#importByTable">Thêm câu hỏi thủ công</a>
                 </li>
             </ul>
-
             <!-- Tab panes -->
             <div class="tab-content">
                 <div id="importByFile" class="container tab-pane active"><br>
@@ -43,7 +40,7 @@
                     </div>
                 </div>
                 <div id="importByTable" class="container tab-pane fade"><br>
-        
+
                 </div>
             </div>
         </div>
@@ -65,10 +62,10 @@
     }
 </script>
 <script type="text/javascript">
-// Add the following code if you want the name of the file appear on select
-$(".custom-file-input").on("change", function() {
-    var fileName = $(this).val().split("\\").pop();
-    $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-});
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
 </script>
 @stop

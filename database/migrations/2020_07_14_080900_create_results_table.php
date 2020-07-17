@@ -15,6 +15,13 @@ class CreateResultsTable extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->integer('exam_id');
+            $table->integer('total_true_answer')->default(0);
+            $table->integer('total_question')->default(0);
+            $table->float('score')->default(100);
+            $table->string('status')->default('open');
+            $table->string('exam_key')->nullable();
             $table->timestamps();
         });
     }

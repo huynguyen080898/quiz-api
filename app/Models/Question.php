@@ -24,4 +24,9 @@ class Question extends Model
     {
         return $this->belongsTo('App\Models\Quiz', 'quiz_id', 'id');
     }
+
+    public function examDetails()
+    {
+        return $this->hasMany('App\Models\ExamDetail', 'question_id', 'id');
+    }
 }

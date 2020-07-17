@@ -14,6 +14,11 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
 		return User::class;
 	}
 
+	public function getUsers()
+	{
+		return $this->_model->get();
+	}
+
 	public function postUser($request)
 	{
 		return $this->_model->firstOrCreate([

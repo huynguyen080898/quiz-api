@@ -11,4 +11,9 @@ class QuestionEloquentRepository extends EloquentRepository implements QuestionR
 	{
 		return Question::class;
 	}
+
+	public function getQuestions()
+	{
+		return $this->_model::with('quiz:id,title')->get();
+	}
 }

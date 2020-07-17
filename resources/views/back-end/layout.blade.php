@@ -49,11 +49,9 @@
       <!-- Divider -->
       <hr class="sidebar-divider">
 
-
-
       <!-- Nav Item - Pages Collapse Menu -->
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{route('user.getAll')}}">
           <i class="fas fa-fw fa-cog"></i>
           <span>Quản lý người dùng</span>
         </a>
@@ -67,14 +65,14 @@
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{route('exam.getAll')}}">
           <i class="fas fa-fw fa-cog"></i>
           <span>Quản lý đề thi</span>
         </a>
       </li>
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="#">
+        <a class="nav-link collapsed" href="{{route('question.getAll')}}">
           <i class="fas fa-fw fa-cog"></i>
           <span>Ngân hàng câu hỏi</span>
         </a>
@@ -148,7 +146,7 @@
             <li class="nav-item dropdown no-arrow">
               <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 <span class="mr-2 d-none d-lg-inline text-gray-600">Xin Chào: Admin</span>
-                <img class="img-profile rounded-circle" src="{{Auth::user()->avatar_url}}">
+                <img class="img-profile rounded-circle" src="">
               </a>
               <!-- Dropdown - User Information -->
               <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

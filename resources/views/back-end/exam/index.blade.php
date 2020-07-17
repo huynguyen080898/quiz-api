@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 <!-- @section('title', 'Quiz') -->
 @section('styles')
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
@@ -35,15 +35,15 @@
                     @foreach ($exams as $exam)
                     <tr>
                         <th> {{ $i++ }} </th>
-                        <td> {{ $exam->quiz_title }} </td>
+                        <td> {{ $exam->quiz['title'] }} </td>
                         <td> {{ $exam->title }} </td>
                         <td> {{ $exam->time }} (phut)</td>
                         <td> {{ $exam->start_date}}</td>
                         <td> {{ $exam->end_date}}</td>
                         <td> {{ $exam->status }}</td>
-                        <td><a href="#">Xem chi tiết</a></td>
+                        <td><a href="{{route('exam.detail', $exam->id)}}">Xem chi tiết</a></td>
                         <td><a href="#">Xem thống kê</a></td>
-                        <td><a href="#" class="btn btn-info btn-circle"><i class="fa fas fa-edit"></i></a>
+                        <td><a href="{{route('exam.edit',$exam->id)}}" class="btn btn-info btn-circle"><i class="fa fas fa-edit"></i></a>
                             <a href="#" onclick="return confirm('Bạn có thật sự muốn xóa?')" class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a>
                         </td>
                     </tr>

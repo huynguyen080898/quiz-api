@@ -20,12 +20,21 @@ class Exam extends Model
         'start_date',
         'start_time',
         'end_date',
-        'end_time',
         'exam_key'
     ];
 
     public function quiz()
     {
         return $this->belongsTo('App\Models\Quiz', 'quiz_id', 'id');
+    }
+
+    public function examDetails()
+    {
+        return $this->hasMany('App\Models\ExamDetail', 'exam_id', 'id');
+    }
+
+    public function results()
+    {
+        return $this->hasMany('App\Models\Result', 'exam_id', 'id');
     }
 }

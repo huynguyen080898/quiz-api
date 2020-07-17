@@ -20,8 +20,12 @@ Route::get('/', function () {
 
 Route::group(['prefix' => 'user'], function () {
     Route::post('create', 'UserController@postUser')->name('user.post');
+    Route::get('/', 'UserController@getUsers')->name('user.getAll');
 });
 
+Route::group(['prefix' => 'user-answer'], function () {
+    Route::put('/', 'UserAnswerController@putUserAnswer')->name('user.answer');
+});
 
 Route::group(['prefix' => 'quiz'], function () {
     Route::get('/', 'QuizController@getQuizzes')->name('quiz.getAll');
@@ -34,5 +38,22 @@ Route::group(['prefix' => 'quiz'], function () {
 Route::group(['prefix' => 'exam'], function () {
     Route::get('/', 'ExamController@getExams')->name('exam.getAll');
     Route::get('create', 'ExamController@create')->name('exam.create');
-    Route::post('store', 'ExamController@postExam')->name('exam.stote');
+    Route::post('store', 'ExamController@postExam')->name('exam.store');
+    Route::get('edit/{id}', 'ExamController@getExam')->name('exam.edit');
+    Route::post('update/{id}', 'ExamController@putExam')->name('exam.update');
+
+    Route::group(['prefix' => 'detail'], function () {
+        Route::get('{id}/start', 'ExamDetailController@getExamDetailByExamID')->name('exam.detail.get');
+        Route::get('{id}', 'ExamDetailController@getExamDetail')->name('exam.detail');
+    });
 });
+
+Route::group(['prefix' => 'question'], function () {
+    Route::get('/', 'QuestionController@getQuestions')->name('question.getAll');
+    Route::get('create', 'QuestionController@create')->name('question.create');
+    Route::post('store', 'QuestionController@postQuestions')->name('question.store');
+
+    Route::get('{id}/answers', 'AnswerController@getAnswerByQuestionID')->name('question.getAnswers');
+});
+
+Route::get('/', 'HomeController@index')->name('home');

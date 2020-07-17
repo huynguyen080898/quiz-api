@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 
 <!-- @section('title', 'Add Exam')     -->
 @section('styles')
@@ -22,40 +22,36 @@
                     <option value="0">--- Chọn danh mục ---</option>
                     @foreach ($quizzes as $quiz)
                     <option value="{{$quiz->id}} "> {{ $quiz->title }} </option>
+                    <input type="hidden" name="image_url" value="{{$quiz->image_url}}" />
                     @endforeach
                 </select>
             </div>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-6">
-                <label>Tên</label>
-                <input type="text" name="title" class="form-control" placeholder="Nhập tên đề thi...">
-            </div>
-            <div class="form-group col-md-6">
-                <label>Thời gian thi (phút)</label>
-                <input type="number" name="time" class="form-control" placeholder="Nhập thời gian thi (phút)...">
-            </div>
 
+        <div class="form-group">
+            <label>Tên</label>
+            <input type="text" name="title" class="form-control" placeholder="Nhập tên đề thi...">
         </div>
+
         <div class="form-row">
             <div class="form-group col-md-6">
                 <label>Ngày mở</label>
                 <input class="date form-control datepicker" id="start_date" type="text" name="start_date">
             </div>
             <div class="form-group col-md-6">
-                <label>Giờ bắt đầu thi</label>
-                <input type="time" class="form-control" name="start_time">
-                <!-- <input class="form-control" type="text" name="start_time"> -->
+                <label>Ngày đóng</label>
+                <input class="date form-control datepicker" id="end_date" type="text" name="end_date">
             </div>
         </div>
         <div class="form-row">
             <div class="form-group col-md-6">
-                <label>Ngày đóng</label>
-                <input class="date form-control datepicker" id="end_date" type="text" name="end_date">
+                <label>Giờ bắt đầu thi</label>
+                <input type="time" class="form-control" name="start_time">
+                <!-- <input class="form-control" type="text" name="start_time"> -->
             </div>
             <div class="form-group col-md-6">
-                <label>Giờ kết thúc </label>
-                <input type="time" class="form-control" name="end_time">
+                <label>Thời gian thi (phút)</label>
+                <input type="number" name="time" class="form-control" placeholder="Nhập thời gian thi (phút)...">
             </div>
         </div>
         <div class="form-group">
@@ -68,7 +64,7 @@
         </div>
 
         <div class="form-group">
-            @include('admin.tab.import')
+            @include('back-end.tab.import')
         </div>
 
         <button type="submit" class="btn btn-block btn-success">Thêm</button>

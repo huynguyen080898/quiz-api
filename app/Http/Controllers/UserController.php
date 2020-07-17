@@ -34,4 +34,10 @@ class UserController extends Controller
             return redirect()->back();
         }
     }
+
+    public function getUsers()
+    {
+        $users = $this->userRepository->getUsers();
+        return view('back-end.user.index', ['users' => $users]);
+    }
 }

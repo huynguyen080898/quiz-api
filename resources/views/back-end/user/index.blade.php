@@ -1,14 +1,10 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 <!-- @section('title', 'Quiz') -->
 @section('styles')
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @stop
 
 @section('content')
-
-@include('notification.messages')
-
-@include('notification.errors')
 
 <h3 style="text-align: center">Danh sách người dùng</h3>
 <div class="card shadow mb-4">
@@ -23,6 +19,7 @@
                         <th>STT</th>
                         <th>Họ và tên</th>
                         <th>Email</th>
+                        <td>Mã sinh viên</td>
                         <th>Actions</th>
                     </tr>
                 </thead>
@@ -34,12 +31,10 @@
                     <tr>
                         <th> {{ $i++ }} </th>
                         <td> {{ $user->name }} </td>
-                        <td> {{$user->email}}  </td>
-                        <td><a href="#" class="btn btn-info btn-circle"><i
-                                    class="fa fas fa-edit"></i></a>
-                            <a href="#"
-                                onclick="return confirm('Bạn có thật sự muốn xóa?')"
-                                class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a></td>
+                        <td> {{ $user->email }} </td>
+                        <td> {{$user->student_code}}</td>
+                        <td><a href="#" class="btn btn-info btn-circle"><i class="fa fas fa-edit"></i></a>
+                            <a href="#" onclick="return confirm('Bạn có thật sự muốn xóa?')" class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a></td>
                     </tr>
                     @endforeach
                 </tbody>
