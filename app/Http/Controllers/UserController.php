@@ -33,6 +33,15 @@ class UserController extends Controller
             $this->userRepository->postUser($request);
             return redirect()->back();
         }
+
+        if ($request->has('formSendMail')) {
+            $validatedData = $request->validate([
+                'email' => 'required|email',
+            ]);
+
+            $this->userRepository->postUser($request);
+            return redirect()->back();
+        }
     }
 
     public function getUsers()

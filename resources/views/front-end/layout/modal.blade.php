@@ -34,8 +34,9 @@
                  </div>
              </div>
 
-             <p class="doen_have_acc">Bạn chưa có tài khoản? <a class="dont-hav-acc" href="#test-form2">Đăng ký</a>
-             </p>
+             <p class="doen_have_acc">Bạn chưa có tài khoản? <a class="dont-hav-acc" href="#test-form2">Đăng ký</a> </p>
+             <p class="doen_have_acc"> <a class="dont-hav-acc" href="#test-form3">Quên mật khẩu</a> </p>
+
          </div>
      </div>
  </div>
@@ -71,6 +72,33 @@
                      </div>
                      <div class="col-xl-12">
                          <button type="submit" name="formSignUp" class="boxed_btn_orange">Đăng Ký</button>
+                     </div>
+                 </div>
+             </form>
+         </div>
+     </div>
+ </div>
+ <!-- form itself end -->
+
+
+ <!-- form itself end-->
+ <div id="test-form3" class="white-popup-block mfp-hide">
+     <div class="popup_box">
+         <div class="popup_inner">
+             <div class="logo text-center">
+                 <a href="#">
+                     <img src="img/form-logo.png" alt="">
+                 </a>
+             </div>
+             <h3>Quên mật khẩu</h3>
+             <form action="{{route('user.post')}}" method="POST">
+                 @csrf
+                 <div class="row">
+                     <div class="col-xl-12 col-md-12">
+                         <input type="email" name="email" class="form-control" placeholder="Email">
+                     </div>
+                     <div class="col-xl-12">
+                         <button type="submit" name="formSendMail" class="boxed_btn_orange">Gửi</button>
                      </div>
                  </div>
              </form>
