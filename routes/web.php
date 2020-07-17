@@ -17,10 +17,11 @@ Route::get('/', function () {
     return view('front-end.pages.index');
 });
 
-
 Route::group(['prefix' => 'user'], function () {
     Route::post('create', 'UserController@postUser')->name('user.post');
     Route::get('/', 'UserController@getUsers')->name('user.getAll');
+    Route::get('reset-password/{token}','UserController@getResetPassword')->name('user.getResetPassword');
+    Route::post('reset-password/{token}','UserController@postResetPassword')->name('user.postResetPassword');
 });
 
 Route::group(['prefix' => 'user-answer'], function () {
