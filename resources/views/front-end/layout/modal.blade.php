@@ -4,7 +4,7 @@
          <div class="popup_inner">
              <div class="logo text-center">
                  <a href="#">
-                     <img src="img/form-logo.png" alt="">
+                     <img src="img/newlogo.png" alt="">
                  </a>
              </div>
              <h3>Đăng Nhập</h3>
@@ -48,7 +48,7 @@
          <div class="popup_inner">
              <div class="logo text-center">
                  <a href="#">
-                     <img src="img/form-logo.png" alt="">
+                     <img src="img/newlogo.png" alt="">
                  </a>
              </div>
              <h3>Đăng Ký</h3>
@@ -87,7 +87,7 @@
          <div class="popup_inner">
              <div class="logo text-center">
                  <a href="#">
-                     <img src="img/form-logo.png" alt="">
+                     <img src="img/newlogo.png" alt="">
                  </a>
              </div>
              <h3>Quên mật khẩu</h3>

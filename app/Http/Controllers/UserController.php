@@ -39,7 +39,7 @@ class UserController extends Controller
                 'email' => 'required|email',
             ]);
 
-            $this->userRepository->postUser($request);
+
             return redirect()->back();
         }
     }
