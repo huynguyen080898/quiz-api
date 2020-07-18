@@ -19,7 +19,7 @@
                     <div class="single_courses">
                         <div class="thumb">
                             <a href="#">
-                                <img src="{{$exam->image_url}}" alt="">
+                                <img src="{{$exam->image_url}}" alt="" width="150px" height="200px">
                             </a>
                         </div>
                         <div class="courses_info">

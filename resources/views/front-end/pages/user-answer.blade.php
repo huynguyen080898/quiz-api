@@ -16,13 +16,12 @@
                     <span class="font-weight-bold">{!! $value['question_title'] !!}</span>
                     @endif
                 </div>
-                <div style="font-size:18px;color:black">
+                <div>
                     @if($value['answer_type'] == 'single_select')
                     @foreach($value['answers'] as $answer)
-
                     <div class="form-check disabled">
                         <input class="form-check-input" type="radio" disabled @if(in_array($answer['id'], $value['user_answers'])) checked @endif>
-                        <label class="form-check-label @if((in_array($answer['id'], $value['user_answers']) && $answer['correct'])) text-success @elseif((in_array($answer['id'], $value['user_answers']) && !$answer['correct'])) text-danger @endif">
+                        <label class="font-weight-bold form-check-label @if((in_array($answer['id'], $value['user_answers']) && $answer['correct'])) text-success @elseif((in_array($answer['id'], $value['user_answers']) && !$answer['correct'])) text-danger @endif">
                             {{$answer['title']}}
                         </label>
                     </div>
@@ -31,7 +30,7 @@
                     @foreach($value['answers'] as $answer)
                     <div class="form-check disabled">
                         <input class="form-check-input" type="checkbox" disabled @if(in_array($answer['id'], $value['user_answers'])) checked @endif>
-                        <label class="form-check-label @if((in_array($answer['id'], $value['user_answers']) && $answer['correct'])) text-success @elseif((in_array($answer['id'], $value['user_answers']) && !$answer['correct'])) text-danger @endif">
+                        <label class="font-weight-bold form-check-label @if((in_array($answer['id'], $value['user_answers']) && $answer['correct'])) text-success @elseif((in_array($answer['id'], $value['user_answers']) && !$answer['correct'])) text-danger @endif">
                             {{$answer['title']}}
                         </label>
                     </div>
@@ -47,5 +46,3 @@
         </div>
     </div>
 </div>
-
-@stop

@@ -11,8 +11,8 @@
                  <div class="col-xl-6 col-md-6">
                      <div class="slider_info">
                          <h3>Kiểm Tra <br>
-                             Kiến Thức<br>
-                             Trực Tuyến</h3>
+                             Trắc Nghiệm<br>
+                             Online</h3>
                      </div>
                  </div>
              </div>

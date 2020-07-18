@@ -1,9 +1,8 @@
 @extends('front-end.layout.layout')
 
 @section('content')
-@include('front-end.layout.slider')
 <!-- popular_courses_start -->
-<div class="popular_courses">
+<div class="popular_courses" style="margin-top:80px">
     <div class="all_courses">
         <div class="container">
             <div class="row">
@@ -25,7 +24,7 @@
                     <div class="single_courses">
                         <div class="thumb">
                             <a href="#">
-                                <img src="{{$exam->image_url}}" alt="">
+                                <img src="{{$exam->image_url}}" alt="" width="150px" height="200px">
                             </a>
                         </div>
                         <div class="courses_info">

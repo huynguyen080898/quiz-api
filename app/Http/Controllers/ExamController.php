@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use Exception;
 use Carbon\Carbon;
-use App\Models\Question;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
@@ -72,6 +71,7 @@ class ExamController extends Controller
         //     'key.max' => 'Khoa bai thi toi da 5 ky tu'
         // ]);
         // dd($request->all());
+
         DB::beginTransaction();
         try {
 

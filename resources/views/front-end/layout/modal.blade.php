@@ -28,12 +28,12 @@
 
              <div class="row">
                  <div class="col-xl-12 col-md-12 my-4">
-                     <a href="{{route('login.social','facebook')}}" class="fb btn">
+                     <a href="{{route('login.social','facebook')}}" class="fb btn bg-primary text-white">
                          <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
                      </a>
                  </div>
                  <div class="col-xl-12 col-md-12">
-                     <a href="{{route('login.social','google')}}" class="google btn"><i class="fa fa-google fa-fw">
+                     <a href="{{route('login.social','google')}}" class="google btn bg-danger text-white"><i class="fa fa-google fa-fw">
                          </i> Đăng nhập bằng Google+
                      </a>
                  </div>

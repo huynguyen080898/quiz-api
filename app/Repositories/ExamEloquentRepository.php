@@ -4,6 +4,7 @@ namespace App\Repositories;
 
 use Carbon\Carbon;
 use App\Models\Exam;
+use App\Models\Quiz;
 use App\Contracts\ExamRepositoryInterface;
 
 class ExamEloquentRepository extends EloquentRepository implements ExamRepositoryInterface
@@ -29,7 +30,8 @@ class ExamEloquentRepository extends EloquentRepository implements ExamRepositor
 		$end_date = ($request->end_date) ?? null;
 		$start_date_format = $start_date;
 		$end_date_format = $end_date;
-
+		$image_url_quiz = Quiz::where('id', $request->quiz_id)->select('image_url')->first();
+		$image_url =  $image_url_quiz->image_url;
 		if ($start_date != null) {
 			$start_date_format = $this->formatDate($start_date);
 		}
@@ -48,7 +50,7 @@ class ExamEloquentRepository extends EloquentRepository implements ExamRepositor
 			'start_time' => $request->start_time ?? null,
 			'end_date' => $end_date_format,
 			'key' => $request->key ?? null,
-			'image_url' => $request->image_url,
+			'image_url' => $image_url,
 		]);
 	}
 

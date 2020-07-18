@@ -21,8 +21,7 @@
                 <select class="custom-select" name="quiz_id" id="quiz_id">
                     <option value="0">--- Chọn danh mục ---</option>
                     @foreach ($quizzes as $quiz)
-                    <option value="{{$quiz->id}} "> {{ $quiz->title }} </option>
-                    <input type="hidden" name="image_url" value="{{$quiz->image_url}}" />
+                    <option value="{{$quiz->id}}"> {{ $quiz->title }} </option>
                     @endforeach
                 </select>
             </div>
