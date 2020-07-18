@@ -1,11 +1,18 @@
 @extends('front-end.layout.layout')
+<<<<<<< HEAD
 
+=======
+@section('styles')
+<link rel="stylesheet" href="css/form-test.css">
+@stop
+>>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91
 @section('content')
 <!-- popular_courses_start -->
 <div class="popular_courses">
     <div class="all_courses">
         <div class="container">
             <div class="privew bg-light">
+<<<<<<< HEAD
                 <div class="px-5 mt-5 text-center pb-4">
                     <form action="{{ route('user.postResetPassword',$token) }}" method="post">
                         @csrf
@@ -26,6 +33,14 @@
                     </form>
                 </div>
 
+=======
+                <form action="{{ route('user.postResetPassword',$token) }}" method="post">
+                    @csrf
+                    <input type="password" name="password" placeholder="Nhap mat khau" required>
+                    <input type="password" name="rePassword" placeholder="Nhap lai mat khau" required>
+                    <input type="submit" value="Xac nhan">
+                </form>
+>>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91
             </div>
         </div>
     </div>
@@ -33,4 +48,8 @@
 <!-- popular_courses_end-->
 
 
+<<<<<<< HEAD
 @stop
+=======
+@stop
+>>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91

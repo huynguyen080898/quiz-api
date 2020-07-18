@@ -16,12 +16,21 @@ class ResetPasswordMail extends Mailable
      *
      * @return void
      */
+<<<<<<< HEAD
     public $link, $email;
     public function __construct($link, $email)
     {
         //
         $this->link = $link;
         $this->email = $email;
+=======
+    public $link,$email;
+    public function __construct($link, $email)
+    {
+        //
+        $this->link=$link;
+        $this->email=$email;
+>>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91
     }
 
     /**
