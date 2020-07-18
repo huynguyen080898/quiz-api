@@ -20,16 +20,11 @@ Route::get('/', function () {
 Route::group(['prefix' => 'user'], function () {
     Route::post('create', 'UserController@postUser')->name('user.post');
     Route::get('/', 'UserController@getUsers')->name('user.getAll');
-<<<<<<< HEAD
     Route::get('profile', 'UserController@getUser')->name('user.profile');
     Route::post('profile', 'UserController@putUser')->name('user.update');
     Route::get('reset-password/{token}', 'UserController@getResetPassword')->name('user.getResetPassword');
     Route::post('reset-password/{token}', 'UserController@postResetPassword')->name('user.postResetPassword');
     Route::get('history', 'UserController@getHistory')->name('user.history');
-=======
-    Route::get('reset-password/{token}','UserController@getResetPassword')->name('user.getResetPassword');
-    Route::post('reset-password/{token}','UserController@postResetPassword')->name('user.postResetPassword');
->>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91
 });
 
 Route::group(['prefix' => 'user-answer'], function () {
