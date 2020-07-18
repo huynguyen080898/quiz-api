@@ -20,7 +20,9 @@ class ExamDetailEloquentRepository extends EloquentRepository implements ExamDet
 
 	public function getExamDetailByExamID($examID, $userID)
 	{
-		return $this->_model::with('question.answers', 'exam.results')->where('exam_id', $examID)->inRandomOrder($userID)
+		return $this->_model::with('question.answers', 'exam.results')
+			->where('exam_id', $examID)
+			->inRandomOrder($userID)
 			->paginate(1);
 	}
 }

@@ -6,8 +6,8 @@
     <h3 style="text-align: center; color: red; font-weight: bold">Thêm Câu Hỏi</h3>
     <form method="post" action=" {{ route('question.store')}} " enctype="multipart/form-data">
         @csrf
-        @include('back-end.notifications.messages')
-        @include('back-end.notifications.errors')
+        @include('notifications.messages')
+        @include('notifications.errors')
         <div class="form-group">
             <div class="input-group mb-3 form-group">
                 <div class="input-group-prepend">

@@ -22,6 +22,11 @@ class UserAnswerEloquentRepository extends EloquentRepository implements UserAns
 			->select('user_answer')->get();
 	}
 
+	public function getUserAnswerByResultID($resultID)
+	{
+		return $this->_model->where('result_id', $resultID)->get();
+	}
+
 	public function putUserAnswer($request)
 	{
 		$user_answer = $request->user_answer;

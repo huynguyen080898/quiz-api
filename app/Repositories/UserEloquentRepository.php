@@ -30,4 +30,12 @@ class UserEloquentRepository extends EloquentRepository implements UserRepositor
 			'student_code' => $request->student_code ?? $request->random_student_code
 		]);
 	}
+
+	public function putUser($request, $userID)
+	{
+		$user = $this->_model->find($userID);
+		$user->fill($request->all());
+		$user->save();
+		return $user;
+	}
 }

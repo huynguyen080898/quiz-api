@@ -15,23 +15,18 @@
                 <div id="ajax-container" class="questionsBox">
                     @include('front-end.partial.exam-detail')
                 </div>
-
-
             </div>
-
             <div class="row mt-4">
-                <div class="col-xl-12 d-flex justify-content-center">
+                <div class="col-xl-12 text-center">
                     @for($i = 1; $i <= $data->total(); $i++)
                         <a class="ajax btn btn-secondary my-2 mx-1" id="page{{$i}}" href="{{route('exam.detail.get',$data[0]->exam_id)}}?page={{$i}}">{{$i}}</a>
                         @endfor
                 </div>
-
             </div>
         </div>
     </div>
 </div>
 <!-- popular_courses_end-->
-
 
 @stop
 
@@ -70,6 +65,38 @@
         });
     }
 </script>
+<script type="text/javascript">
+    var result_id = "{{$data[0]->exam['results'][0]->id}}";
+    // Set the date we're counting down to
+    var countDownDate = new Date("{!!$exam_time!!}").getTime();
+    // Update the count down every 1 second
+    var x = setInterval(function() {
+
+        // Get today's date and time
+        var now = new Date().getTime();
+
+        // Find the distance between now and the count down date
+        var distance = countDownDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = days + " ngày " + hours + "h : " + minutes + "p : " + seconds + " giây ";
+
+        // If the count down is over, write some text 
+        if (distance < 0) {
+            clearInterval(x);
+            document.getElementById("demo").innerHTML = "Hết giờ";
+            window.location.assign("{{route('exam.result',$data[0]->exam['results'][0]->id)}}");
+            return false;
+        }
+    }, 1000);
+</script>
+
 <script type="text/javascript">
     var result_id = "{{$data[0]->exam['results'][0]->id}}";
 

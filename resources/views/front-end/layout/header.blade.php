@@ -6,7 +6,7 @@
                 <div class="row align-items-center no-gutters">
                     <div class="col-xl-2 col-lg-2">
                         <div class="logo-img">
-                            <a href="index.html">
+                            <a href="{{route('home')}}">
                                 <img src="img/newlogo.png" alt="">
                             </a>
                         </div>
@@ -15,7 +15,7 @@
                         <div class="main-menu  d-none d-lg-block">
                             <nav>
                                 <ul id="navigation">
-                                    <li><a class="active" href="index.html">Trang chủ</a></li>
+                                    <li><a class="active" href="{{route('home')}}">Trang chủ</a></li>
                                     <li><a href="#">Danh mục <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             @foreach($quizzes as $quiz)
@@ -23,14 +23,6 @@
                                             @endforeach
                                         </ul>
                                     </li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="single-blog.html">single-blog</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -38,8 +30,25 @@
                     <div class="col-xl-3 col-lg-3 d-none d-lg-block">
                         <div class="log_chat_area d-flex align-items-center">
                             @if(Auth::check())
-                            <span class="login popup-with-form mr-3"> {{Auth::user()->name}}</span>
-                            <i class="flaticon-user"></i>
+                            <ul class="nav page-navigation">
+                                <li class="nav-item dropdown">
+                                    <a class="nav-link text-white" data-toggle="dropdown" id="navbarDropdown" href="#">
+                                        <img class="rounded-circle" src="{{Auth::user()->avatar_url ?? 'https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcRW6X2lldt_gy2tcbXCKBbKWNVBpH-f1Mcjsw&usqp=CAU'}}" width="50" height="50px">
+                                        {{Auth::user()->name}}
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="{{route('user.profile')}}">
+                                            Hồ sơ
+                                        </a>
+                                        <a class="dropdown-item" href="{{route('user.history')}}">
+                                            Lịch sử bài thi
+                                        </a>
+                                        <a class="dropdown-item" href="#">
+                                            Đăng xuất
+                                        </a>
+                                    </div>
+                                </li>
+                            </ul>
                             @else
                             <a href="#test-form" class="login popup-with-form">
                                 <i class="flaticon-user"></i>

@@ -65,7 +65,13 @@
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
-
+    <script>
+        var msg = '{{Session::get("alert")}}';
+        var exist = '{{Session::has("alert")}}';
+        if (exist) {
+            alert(msg);
+        }
+    </script>
     @yield('scripts')
 </body>
 

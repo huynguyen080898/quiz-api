@@ -21,4 +21,17 @@ class ResultEloquentRepository extends EloquentRepository implements ResultRepos
 			'exam_id' => $examID
 		]);
 	}
+
+	public function getResultsByUserID($userID)
+	{
+		return $this->_model::with('exam:id,title')->where('user_id', $userID)->get();
+	}
+
+	public function putResult($request, $resultID)
+	{
+		$result = $this->_model->find($resultID);
+		$result->fill($request->all());
+		$result->save();
+		return $result;
+	}
 }

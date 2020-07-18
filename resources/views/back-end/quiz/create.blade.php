@@ -4,8 +4,8 @@
 <div class="container">
     <h3 style="text-align: center; color: red; font-weight: bold">Danh Mục</h3>
     <form method="post" action=" {{route('quiz.stote')}} " enctype="multipart/form-data">
-        @include('back-end.notifications.messages')
-        @include('back-end.notifications.errors')
+        @include('notifications.messages')
+        @include('notifications.errors')
         @csrf
         <div class="form-group">
             <label>Danh Mục</label>

@@ -12,8 +12,8 @@
         <a href="{{route('question.create')}}" class="btn btn-success float-right">Thêm Câu Hỏi</a>
     </div>
     <div class="card-body">
-        @include('back-end.notifications.messages')
-        @include('back-end.notifications.errors')
+        @include('notifications.messages')
+        @include('notifications.errors')
         <div class="table-responsive">
             <table class="table table-bordered table-striped" id="dataTable" width="100%" cellspacing="0">
                 <thead>

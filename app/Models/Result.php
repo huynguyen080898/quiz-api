@@ -14,7 +14,8 @@ class Result extends Model
         'score',
         'total_true_answer',
         'total_question',
-        'status'
+        'status',
+        'exam_key'
     ];
 
     public function user()

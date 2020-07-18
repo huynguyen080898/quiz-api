@@ -12,8 +12,8 @@
 
     <form method="post" action="{{route('exam.update',$exam->id)}}">
         @csrf
-        @include('back-end.notifications.messages')
-        @include('back-end.notifications.errors')
+        @include('notifications.messages')
+        @include('notifications.errors')
         <div class="form-group">
             <label>Tên</label>
             <input type="text" name="title" class="form-control" placeholder="Nhập tên đề thi..." value="{{$exam->title}}">

@@ -17,10 +17,14 @@ Route::get('/', function () {
     return view('front-end.pages.index');
 });
 
-
 Route::group(['prefix' => 'user'], function () {
     Route::post('create', 'UserController@postUser')->name('user.post');
     Route::get('/', 'UserController@getUsers')->name('user.getAll');
+    Route::get('profile', 'UserController@getUser')->name('user.profile');
+    Route::post('profile', 'UserController@putUser')->name('user.update');
+    Route::get('reset-password/{token}', 'UserController@getResetPassword')->name('user.getResetPassword');
+    Route::post('reset-password/{token}', 'UserController@postResetPassword')->name('user.postResetPassword');
+    Route::get('history', 'UserController@getHistory')->name('user.history');
 });
 
 Route::group(['prefix' => 'user-answer'], function () {
@@ -56,4 +60,9 @@ Route::group(['prefix' => 'question'], function () {
     Route::get('{id}/answers', 'AnswerController@getAnswerByQuestionID')->name('question.getAnswers');
 });
 
+
+Route::group(['prefix' => 'result'], function () {
+    Route::get('/{id}', 'ResultController@getResult')->name('exam.result');
+    Route::post('{id}/key', 'ResultController@putResult')->name('result.key');
+});
 Route::get('/', 'HomeController@index')->name('home');
