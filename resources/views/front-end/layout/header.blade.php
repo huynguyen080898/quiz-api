@@ -19,7 +19,7 @@
                                     <li><a href="#">Danh mục <i class="ti-angle-down"></i></a>
                                         <ul class="submenu">
                                             @foreach($quizzes as $quiz)
-                                            <li><a href="#">{{$quiz->title}}</a></li>
+                                            <li><a href="{{route('quiz.exam',$quiz->id)}}">{{$quiz->title}}</a></li>
                                             @endforeach
                                         </ul>
                                     </li>
@@ -43,7 +43,7 @@
                                         <a class="dropdown-item" href="{{route('user.history')}}">
                                             Lịch sử bài thi
                                         </a>
-                                        <a class="dropdown-item" href="#">
+                                        <a class="dropdown-item" href="{{route('logout')}}">
                                             Đăng xuất
                                         </a>
                                     </div>

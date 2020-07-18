@@ -15,7 +15,7 @@ class ExamDetailEloquentRepository extends EloquentRepository implements ExamDet
 
 	public function getExamDetail($examID)
 	{
-		return $this->_model::with('question:id,title')->where('exam_id', $examID)->get();
+		return $this->_model::with('question:id,title,question_type,answer_type', 'question.answers')->where('exam_id', $examID)->get();
 	}
 
 	public function getExamDetailByExamID($examID, $userID)

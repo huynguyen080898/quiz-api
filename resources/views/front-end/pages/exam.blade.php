@@ -9,7 +9,13 @@
             <div class="row">
                 <div class="col-xl-12">
                     <div class="section_title text-center mb-100">
-                        <h3>Bài Thi Mới</h3>
+                        @foreach($quizzes as $quiz)
+                        @if($quiz->id == $quizID)
+                        <h3>
+                            {{$quiz->title}}
+                        </h3>
+                        @endif
+                        @endforeach
                     </div>
                 </div>
             </div>

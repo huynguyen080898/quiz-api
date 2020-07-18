@@ -13,17 +13,23 @@ use App\Services\ImportDataByWordService;
 use App\Contracts\ExamRepositoryInterface;
 use App\Contracts\QuizRepositoryInterface;
 use App\Services\ImportDataByExcelService;
+use App\Contracts\ResultRepositoryInterface;
 use App\Services\ImportDataByDatabaseService;
 
 class ExamController extends Controller
 {
     protected $quizRepository;
     protected $examRepository;
+    protected $resultRepository;
 
-    public function __construct(QuizRepositoryInterface $quizRepository, ExamRepositoryInterface $examRepository)
-    {
+    public function __construct(
+        QuizRepositoryInterface $quizRepository,
+        ExamRepositoryInterface $examRepository,
+        ResultRepositoryInterface $resultRepository
+    ) {
         $this->quizRepository = $quizRepository;
         $this->examRepository = $examRepository;
+        $this->resultRepository = $resultRepository;
     }
 
     public function getExams()
@@ -104,5 +110,19 @@ class ExamController extends Controller
             DB::rollBack();
             throw new Exception($e->getMessage());
         }
+    }
+
+    public function getStatistics($exam_id)
+    {
+        $results = $this->resultRepository->getStatistics($exam_id);
+        // dd($results->toArray());
+        $total_user_pass = 0;
+        foreach ($results as $result) {
+            if ($result->total_true_answer >= $result->total_question / 2) {
+                $total_user_pass += 1;
+            }
+        }
+        // dd($results->toArray());
+        return view('back-end.statistical.index', compact(['results', 'total_user_pass', 'exam_id']));
     }
 }

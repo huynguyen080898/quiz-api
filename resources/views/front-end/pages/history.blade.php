@@ -32,7 +32,7 @@
                                 <th> {{ $result->exam->title }}</th>
                                 <td> {{ $result->created_at }} </td>
                                 <td> {{ $result->score }} </td>
-                                <td><a href="#" class="btn btn-info btn-circle">Xem lại bài thi</a></td>
+                                <td><a href="{{route('user.getResultDetail',[$result->exam_id,$result->id])}}" class="btn btn-info btn-circle">Xem lại bài thi</a></td>
                             </tr>
                             @endforeach
                         </tbody>

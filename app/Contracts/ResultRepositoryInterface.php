@@ -9,4 +9,6 @@ interface ResultRepositoryInterface
     public function postResult($userID, $examID);
 
     public function putResult($request, $resultID);
+
+    public function getStatistics($exam_id);
 }

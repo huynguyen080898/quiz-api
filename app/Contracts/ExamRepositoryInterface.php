@@ -11,4 +11,6 @@ interface ExamRepositoryInterface
     public function postExam($request);
 
     public function putExam($request, $exam);
+
+    public function getExamByQuizID($quizID);
 }

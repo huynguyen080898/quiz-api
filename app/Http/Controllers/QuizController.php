@@ -2,17 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Question;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Contracts\ExamRepositoryInterface;
 use App\Contracts\QuizRepositoryInterface;
 
 class QuizController extends Controller
 {
     protected $quizRepository;
-
-    public function __construct(QuizRepositoryInterface $quizRepository)
+    protected $examRepository;
+    public function __construct(QuizRepositoryInterface $quizRepository, ExamRepositoryInterface $examRepository)
     {
         $this->quizRepository = $quizRepository;
+        $this->examRepository = $examRepository;
     }
 
     public function getQuizzes()
@@ -25,6 +29,13 @@ class QuizController extends Controller
     public function create()
     {
         return view('back-end.quiz.create');
+    }
+
+    public function getExamByQuizID($quizID)
+    {
+        $exams = $this->examRepository->getExamByQuizID($quizID);
+
+        return view('front-end.pages.exam', ['exams' => $exams, 'quizID' => $quizID]);
     }
 
     public function postQuiz(Request $request)
@@ -47,5 +58,55 @@ class QuizController extends Controller
         $this->quizRepository->postQuiz($request);
 
         return redirect()->back()->with('messages', 'Thêm thành công');
+    }
+
+    public function countQuestionByQuizID($id)
+    {
+        $data = Question::where('quiz_id', $id)->select('question_type', 'answer_type', DB::raw('count(*) as question_count_by_type'))
+            ->groupBy('question_type', 'answer_type')->get();
+
+        $result = [];
+        foreach ($data as $value) {
+            $question_type = $value->question_type;
+            $answer_type = $value->answer_type;
+
+            $type = '';
+            $key = '';
+            if ($question_type == 'text') {
+                if ($answer_type == 'single_select') {
+                    $key = [$question_type . '_' . $answer_type];
+                    $type = 'Single select multilple choice questions';
+                }
+                if ($answer_type == 'multi_select') {
+                    $key = $question_type . '_' . $answer_type;
+                    $type = 'Multi select multilple choice questions';
+                }
+                if ($answer_type == 'fill_text') {
+                    $key = $question_type . '_' . $answer_type;
+                    $type = 'Fill text';
+                }
+            }
+
+            if ($question_type == 'image') {
+
+                if ($answer_type == 'single_select') {
+                    $key = $question_type . '_' . $answer_type;
+                    $type = 'Single select image multilple choice questions';
+                }
+
+                if ($answer_type == 'multi_select') {
+                    $key = $question_type . '_' . $answer_type;
+                    $type = 'Multi select image multilple choice questions';
+                }
+            }
+
+            array_push($result, [
+                'type' => $type,
+                'key' => $key,
+                'total_question' => $value->question_count_by_type
+            ]);
+        }
+
+        return response()->json($result);
     }
 }

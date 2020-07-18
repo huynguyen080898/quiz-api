@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Contracts\ExamRepositoryInterface;
 
 class HomeController extends Controller
@@ -19,5 +20,11 @@ class HomeController extends Controller
         $exams = $this->examRepository->getExams();
 
         return view('front-end.pages.index', ['exams' => $exams]);
+    }
+
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('home');
     }
 }

@@ -81,5 +81,4 @@ class ResultController extends Controller
 
         return redirect()->route('exam.detail.get', $result->exam_id);
     }
-    
 }

@@ -52,6 +52,11 @@ class ExamEloquentRepository extends EloquentRepository implements ExamRepositor
 		]);
 	}
 
+	public function getExamByQuizID($quizID)
+	{
+		return $this->_model->where('quiz_id', $quizID)->get();
+	}
+
 	public function putExam($request, $examID)
 	{
 		$start_date = ($request->start_date) ?? null;

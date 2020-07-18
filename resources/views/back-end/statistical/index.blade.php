@@ -1,14 +1,10 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 <!-- @section('title', 'Quiz') -->
 @section('styles')
 <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 @stop
 
 @section('content')
-
-@include('notification.messages')
-
-@include('notification.errors')
 <!-- Page Heading -->
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
     <h1 class="h3 mb-0 text-gray-800">Thống Kê</h1>
@@ -27,7 +23,6 @@
                         <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">Số người tham gia thi</div>
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{$results->count()}}</div>
                     </div>
-
                 </div>
             </div>
         </div>
@@ -58,6 +53,7 @@
                     <tr>
                         <th>STT</th>
                         <th>Họ và tên</th>
+                        <th>Mã số sinh viên</th>
                         <th>Số câu đúng</th>
                         <th>Điểm</th>
                         <th>Ngày thi</th>
@@ -71,11 +67,12 @@
                     @foreach ($results as $result)
                     <tr>
                         <th> {{ $i++ }} </th>
-                        <td> {{ $result->user_name }} </td>
+                        <td> {{ $result->user->name }} </td>
+                        <td>{{ $result->user->student_code}}</td>
                         <td> {{ $result->total_true_answer }} / {{$result->total_question}} </td>
                         <td> {{ $result->score }}</td>
                         <td> {{ $result->created_at }}</td>
-                        <td> <a href="{{route('result.detail', $result->id)}}">Chi tiết</a></td>
+                        <td> <a href="#">Chi tiết</a></td>
                     </tr>
                     @endforeach
                 </tbody>

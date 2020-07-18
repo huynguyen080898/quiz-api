@@ -1,4 +1,4 @@
-@extends('admin.layout')
+@extends('back-end.layout')
 @section('content')
 
 <!-- Page Heading -->

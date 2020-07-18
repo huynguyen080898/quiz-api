@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('front-end.pages.index');
-});
 
 Route::group(['prefix' => 'user'], function () {
     Route::post('create', 'UserController@postUser')->name('user.post');
@@ -29,12 +26,15 @@ Route::group(['prefix' => 'user'], function () {
 
 Route::group(['prefix' => 'user-answer'], function () {
     Route::put('/', 'UserAnswerController@putUserAnswer')->name('user.answer');
+    Route::get('{exam_id}/{result_id}', 'UserAnswerController@getUserAnswerByResultID')->name('user.getResultDetail');
 });
 
 Route::group(['prefix' => 'quiz'], function () {
     Route::get('/', 'QuizController@getQuizzes')->name('quiz.getAll');
     Route::get('create', 'QuizController@create')->name('quiz.create');
     Route::post('store', 'QuizController@postQuiz')->name('quiz.stote');
+    Route::get('{id}/count/question', 'QuizController@countQuestionByQuizID')->name('quiz.count.question');
+    Route::get('{id}/exam', 'QuizController@getExamByQuizID')->name('quiz.exam');
     // Route::put('update')
 });
 
@@ -45,6 +45,7 @@ Route::group(['prefix' => 'exam'], function () {
     Route::post('store', 'ExamController@postExam')->name('exam.store');
     Route::get('edit/{id}', 'ExamController@getExam')->name('exam.edit');
     Route::post('update/{id}', 'ExamController@putExam')->name('exam.update');
+    Route::get('{id}/statistical', 'ExamController@getStatistics')->name('exam.statistical');
 
     Route::group(['prefix' => 'detail'], function () {
         Route::get('{id}/start', 'ExamDetailController@getExamDetailByExamID')->name('exam.detail.get');
@@ -65,4 +66,15 @@ Route::group(['prefix' => 'result'], function () {
     Route::get('/{id}', 'ResultController@getResult')->name('exam.result');
     Route::post('{id}/key', 'ResultController@putResult')->name('result.key');
 });
+
 Route::get('/', 'HomeController@index')->name('home');
+
+Route::get('admin', 'AdminController@index')->name('admin');
+
+Route::get('logout', 'HomeController@logout')->name('logout');
+
+Route::get('/redirect/{social}', 'SocialAuthController@redirect')->name('login.social');
+
+Route::get('/callback/{social}', 'SocialAuthController@callback');
+
+Route::get('export/{id}', 'AdminController@export')->name('export');

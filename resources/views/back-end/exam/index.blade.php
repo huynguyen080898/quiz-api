@@ -42,7 +42,7 @@
                         <td> {{ $exam->end_date}}</td>
                         <td> {{ $exam->status }}</td>
                         <td><a href="{{route('exam.detail', $exam->id)}}">Xem chi tiết</a></td>
-                        <td><a href="#">Xem thống kê</a></td>
+                        <td><a href="{{route('exam.statistical',$exam->id)}}">Xem thống kê</a></td>
                         <td><a href="{{route('exam.edit',$exam->id)}}" class="btn btn-info btn-circle"><i class="fa fas fa-edit"></i></a>
                             <a href="#" onclick="return confirm('Bạn có thật sự muốn xóa?')" class="btn btn-danger btn-circle"><i class="fa fas fa-trash"></i></a>
                         </td>

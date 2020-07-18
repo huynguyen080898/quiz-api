@@ -35,9 +35,12 @@ class ExamDetailController extends Controller
 
     public function getExamDetailByExamID(Request $request, $examID)
     {
-        $userID =  Auth::user()->id;
-
+        $user =  Auth::user();
+        $userID = $user->id;
         if (!$request->ajax()) {
+            if (empty($user->student_code)) {
+                return redirect()->route('user.profile');
+            }
             $this->resultRepository->postResult($userID, $examID);
         }
 

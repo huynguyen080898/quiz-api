@@ -34,4 +34,11 @@ class ResultEloquentRepository extends EloquentRepository implements ResultRepos
 		$result->save();
 		return $result;
 	}
+
+	public function getStatistics($exam_id)
+	{
+		return $this->_model::with('user:id,name,student_code')
+			->where([['exam_id', $exam_id], ['status', 'close']])
+			->orderBy('score', 'desc')->get();
+	}
 }

@@ -113,7 +113,6 @@
     $('#quiz_id').change(function() {
         var id = $(this).val();
         var url = "/quiz/" + id + "/count/question";
-        console.log(url);
         $.ajax({
             type: "GET",
             url: url,

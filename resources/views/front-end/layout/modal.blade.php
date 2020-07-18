@@ -25,12 +25,17 @@
              <div class="row  text-white">
                  <div class="col-xl-12 col-md-12 mt-4 text-center">Or</div>
              </div>
+
              <div class="row">
                  <div class="col-xl-12 col-md-12 my-4">
-                     <button type="submit" class="boxed_btn_orange">Đăng nhập Google</button>
+                     <a href="{{route('login.social','facebook')}}" class="fb btn">
+                         <i class="fa fa-facebook fa-fw"></i> Đăng nhập bằng Facebook
+                     </a>
                  </div>
                  <div class="col-xl-12 col-md-12">
-                     <button type="submit" class="boxed_btn_orange">Đăng nhập Facebook</button>
+                     <a href="{{route('login.social','google')}}" class="google btn"><i class="fa fa-google fa-fw">
+                         </i> Đăng nhập bằng Google+
+                     </a>
                  </div>
              </div>
 
