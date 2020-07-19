@@ -1,5 +1,7 @@
  <!-- form itself end-->
+
  <div id="test-form" class="white-popup-block mfp-hide">
+     @include('notifications.messages')
      <div class="popup_box">
          <div class="popup_inner">
              <div class="logo text-center">
@@ -12,10 +14,10 @@
                  @csrf
                  <div class="row">
                      <div class="col-xl-12 col-md-12">
-                         <input type="email" name="email" placeholder="Enter email">
+                         <input type="email" name="email" placeholder="Enter email" required>
                      </div>
                      <div class="col-xl-12 col-md-12">
-                         <input type="password" name="password" placeholder="Password">
+                         <input type="password" name="password" placeholder="Password" required>
                      </div>
                      <div class="col-xl-12">
                          <button type="submit" name="formSignIn" class="boxed_btn_orange">Đăng Nhập</button>
@@ -49,6 +51,7 @@
 
  <!-- form itself end-->
  <div id="test-form2" class="white-popup-block mfp-hide">
+     @include('notifications.messages')
      <div class="popup_box">
          <div class="popup_inner">
              <div class="logo text-center">
@@ -61,19 +64,19 @@
                  @csrf
                  <div class="row">
                      <div class="col-xl-12 col-md-12">
-                         <input type="text" name="name" class="form-control" placeholder="Nhập tên">
+                         <input type="text" name="name" class="form-control" placeholder="Nhập tên" required>
                      </div>
                      <div class="col-xl-12 col-md-12">
-                         <input type="email" name="email" class="form-control" placeholder="Email">
+                         <input type="email" name="email" class="form-control" placeholder="Email" required>
                      </div>
                      <div class="col-xl-12 col-md-12">
-                         <input type="password" name="password" placeholder="Mật khẩu">
+                         <input type="password" name="password" placeholder="Mật khẩu" required>
                      </div>
                      <div class="col-xl-12 col-md-12">
-                         <input type="password" name="password_confirmation" placeholder="Xác nhận mất khẩu">
+                         <input type="password" name="password_confirmation" placeholder="Xác nhận mất khẩu" required>
                      </div>
                      <div class="col-xl-12 col-md-12">
-                         <input type="text" name="student_code" class="form-control" placeholder="Mã sinh viên">
+                         <input type="text" name="student_code" class="form-control" placeholder="Mã sinh viên" required>
                      </div>
                      <div class="col-xl-12">
                          <button type="submit" name="formSignUp" class="boxed_btn_orange">Đăng Ký</button>
@@ -88,6 +91,7 @@
 
  <!-- form itself end-->
  <div id="test-form3" class="white-popup-block mfp-hide">
+     @include('notifications.messages')
      <div class="popup_box">
          <div class="popup_inner">
              <div class="logo text-center">
@@ -100,7 +104,7 @@
                  @csrf
                  <div class="row">
                      <div class="col-xl-12 col-md-12">
-                         <input type="email" name="email" class="form-control" placeholder="Email">
+                         <input type="email" name="email" class="form-control" placeholder="Email" required>
                      </div>
                      <div class="col-xl-12">
                          <button type="submit" name="formSendMail" class="boxed_btn_orange">Gửi</button>

@@ -29,6 +29,7 @@ class UserController extends Controller
             if (Auth::attempt(['email' => $request->email, 'password' => $request->password])) {
                 return redirect()->back();
             }
+            return redirect()->route('home')->with('alert', 'Tài khoản hoặc mật khẩu không chính xác');
         }
 
         if ($request->has('formSignUp')) {
@@ -55,6 +56,7 @@ class UserController extends Controller
                 Mail::to($email)->send(new ResetPasswordMail($link, $email));
                 return redirect()->back();
             }
+            return redirect()->back()->with('alert', 'Email chưa được đăng ký.');
         }
 
         return redirect()->back();
@@ -65,10 +67,10 @@ class UserController extends Controller
             $exist = DB::table('password_resets')->where('token', '=', $token)->first();
             if ($exist) {
                 return view('front-end.pages.reset-password', compact('token'));
-            } else
-                return redirect()->route('home');
-        } else
+            }
             return redirect()->route('home');
+        }
+        return redirect()->route('home');
     }
 
     public function postResetPassword($token, Request $request)

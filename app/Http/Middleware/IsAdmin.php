@@ -23,6 +23,6 @@ class IsAdmin
 
             Auth::logout();
         }
-        return redirect()->route('admin.login.get');
+        return redirect()->route('admin.login');
     }
 }

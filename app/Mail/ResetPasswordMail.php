@@ -16,21 +16,12 @@ class ResetPasswordMail extends Mailable
      *
      * @return void
      */
-<<<<<<< HEAD
-    public $link, $email;
+    protected $link, $email;
     public function __construct($link, $email)
     {
         //
         $this->link = $link;
         $this->email = $email;
-=======
-    public $link,$email;
-    public function __construct($link, $email)
-    {
-        //
-        $this->link=$link;
-        $this->email=$email;
->>>>>>> 312342a01d678b565250d9485aa4c0d3f20d1c91
     }
 
     /**
@@ -40,6 +31,6 @@ class ResetPasswordMail extends Mailable
      */
     public function build()
     {
-        return $this->subject("Email khoi phuc mat khau Quizz")->view('mail.mail');
+        return $this->subject("Email khôi phục mật khẩu Quiz")->view('mail.mail', ['email' => $this->email, 'link' => $this->link]);
     }
 }

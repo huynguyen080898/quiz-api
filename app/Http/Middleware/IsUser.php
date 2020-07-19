@@ -17,11 +17,7 @@ class IsUser
     public function handle($request, Closure $next)
     {
         if (Auth::user()) {
-            if (Auth::user()->role == 0) {
-                return $next($request);
-            }
-
-            Auth::logout();
+            return $next($request);
         }
         return redirect()->route('home');
     }
