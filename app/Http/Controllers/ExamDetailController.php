@@ -39,7 +39,7 @@ class ExamDetailController extends Controller
         $userID = $user->id;
         if (!$request->ajax()) {
             if (empty($user->student_code)) {
-                return redirect()->route('user.profile');
+                return redirect()->route('user.profile')->with('alert', 'Bạn phải cập nhật mã số sinh viên để tham gia thi');
             }
             $this->resultRepository->postResult($userID, $examID);
         }

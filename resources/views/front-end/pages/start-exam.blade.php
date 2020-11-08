@@ -11,7 +11,6 @@
                 <div class="d-flex flex-row-reverse">
                     <div class="p-2 m-2 border border-primary rounded">Thời gian còn lại: <span class="text-danger mr-3" id="demo"></span></div>
                 </div>
-
                 <div id="ajax-container" class="questionsBox">
                     @include('front-end.partial.exam-detail')
                 </div>
@@ -19,7 +18,7 @@
             <div class="row mt-4">
                 <div class="col-xl-12 text-center">
                     @for($i = 1; $i <= $data->total(); $i++)
-                        <a class="ajax btn btn-secondary my-2 mx-1" id="page{{$i}}" href="{{route('exam.detail.get',$data[0]->exam_id)}}?page={{$i}}">{{$i}}</a>
+                        <a class="ajax button btn-secondary my-2 mx-1" id="page{{$i}}" href="{{route('exam.detail.get',$data[0]->exam_id)}}?page={{$i}}">{{$i}}</a>
                         @endfor
                 </div>
             </div>
@@ -43,8 +42,11 @@
         }
     });
 
-    $(document).ready(function() {
+    function changeColor(page_current) {
+        document.getElementById('page' + page_current).style.backgroundColor = "blue";
+    }
 
+    $(document).ready(function() {
         $(document).on('click', '.ajax', function(event) {
             event.preventDefault();
             var page = $(this).attr('href').split('page=')[1];

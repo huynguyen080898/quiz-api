@@ -37,7 +37,7 @@
                         <th> {{ $i++ }} </th>
                         <td> {{ $exam->quiz['title'] }} </td>
                         <td> {{ $exam->title }} </td>
-                        <td> {{ $exam->time }} (phut)</td>
+                        <td> {{ $exam->time }} (phút)</td>
                         <td> {{ $exam->start_date}}</td>
                         <td> {{ $exam->end_date}}</td>
                         <td> {{ $exam->status }}</td>

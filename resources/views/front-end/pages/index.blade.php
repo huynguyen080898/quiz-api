@@ -27,10 +27,10 @@
                             <h3> <a href="{{ route('exam.detail.get',$exam->id) }}" onclick="return confirm('Bạn có muốn bắt đầu bài thi')">{{$exam->title}}</a></h3>
                             <div class="star_prise d-flex justify-content-between">
                                 <span class="text-muted">
-                                    Ngày mở
+                                    {{($exam->start_date . $exam->start_time)}}
                                 </span>
                                 <span class="text-muted">
-                                    Ngày đóng
+                                    {{$exam->end_date}}
                                 </span>
                             </div>
                         </div>
